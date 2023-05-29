@@ -1,6 +1,8 @@
 import "./style.css";
 import { initDOM } from "./dom";
 
+console.log("HELLO");
+
 document.querySelector("#js-container").innerHTML = `
   <section class="map-section" id="map-section">
     <span class="section-label">Our platform</span>
