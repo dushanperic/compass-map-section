@@ -38,6 +38,7 @@ img.hidden {
   display: none;
 }
 
+/* SECTION */
 #js-section {
   width: 100%;
   background-color: var(--section-bg);
@@ -55,18 +56,20 @@ img.hidden {
 
 .section-label {
   font-size: 21px;
-}
-
-.section-large-h3 {
-  font-size: 45px;
-  line-height: 55px;
-  font-weight: medium;
-  color: var(--color-light);
   color: var(--color-light);
 }
 
-.section-large-paragraph {
-  font-size: 28px;
+.section-title {
+  font-family: Mona sans, sans-serif;
+  font-size: 3.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-light);
+}
+
+.section-subtitle {
+  font-size: 1.75rem;
+  line-height: 1.3;
   max-width: 528px;
   font-weight: 300;
   color: var(--color-light);
@@ -75,8 +78,8 @@ img.hidden {
 .section-description {
   width: 100%;
   max-width: 673px;
-  font-size: 18px;
-  line-height: 170%;
+  font-size: 1.31rem;
+  line-height: 1.5;
   color: var(--color-light);
 }
 
@@ -207,6 +210,7 @@ img.hidden {
   font-size: 18px;
   line-height: 24px;
   margin-bottom: 14px;
+  color: var(--color-light);
 }
 
 /* SPACERS */
@@ -244,12 +248,10 @@ img.hidden {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    /* transform: translateY(5px); */
   }
 
   to {
     opacity: 1;
-    /* transform: none; */
   }
 }
 
@@ -271,7 +273,6 @@ img.hidden {
   .dot {
     width: calc(25vw / 44);
     height: calc(25vw / 44);
-    /* margin: calc((25vw / 44) / 6); */
   }
 
   .dot-inner {
@@ -280,18 +281,14 @@ img.hidden {
   }
 
   .grid-item {
-    width: 100%;
+    display: block;
+    width: 50%;
     height: 100%;
   }
 
   .section-grid {
     display: flex;
     flex-direction: row-reverse;
-  }
-
-  .grid-item {
-    display: block;
-    width: 50%;
   }
 
   .map-container {
@@ -321,7 +318,6 @@ img.hidden {
   .dot {
     width: calc(25vw / 44);
     height: calc(25vw / 44);
-    /* margin: calc((25vw / 44) / 6); */
   }
 
   .grid-item {
@@ -342,13 +338,6 @@ img.hidden {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .content-flex {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-between;
   }
 
   /* SPACERS */
