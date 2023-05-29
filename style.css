@@ -11,6 +11,7 @@
   --color-dark: #101010;
   --color-light: #e7ecea;
   --color-light-muted: #c1c7c5;
+  --section-bg: #414343;
 
   font-family: Mona-Sans, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -27,85 +28,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  width: 100%;
-  margin: 0;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-/* 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -118,6 +40,7 @@ img.hidden {
 
 #js-section {
   width: 100%;
+  background-color: var(--section-bg);
 }
 
 .map-section {
@@ -139,12 +62,14 @@ img.hidden {
   line-height: 55px;
   font-weight: medium;
   color: var(--color-light);
+  color: var(--color-light);
 }
 
 .section-large-paragraph {
   font-size: 28px;
   max-width: 528px;
   font-weight: 300;
+  color: var(--color-light);
 }
 
 .section-description {
@@ -152,6 +77,7 @@ img.hidden {
   max-width: 673px;
   font-size: 18px;
   line-height: 170%;
+  color: var(--color-light);
 }
 
 .section-partner-logo {

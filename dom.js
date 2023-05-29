@@ -8,20 +8,19 @@ import {
   drawMap,
 } from "./utills";
 
-import davisonsLogo from "/davisons-logo-new.svg";
-import filedingsPorterLogo from "/fieldings_porter_logo.svg";
-import cttLawLogo from "/logo-new-ctt-law-white.svg";
-import farnworthRoseLogo from "/logo@2x.svg";
-import edenConveyancingLogo from "/0x0.svg";
-
 const throttleTime = 350;
 
 const PARTNER_LOGO = {
-  farnworth_rose: farnworthRoseLogo,
-  fieldings_porter: filedingsPorterLogo,
-  davisons_law: davisonsLogo,
-  ctt_law: cttLawLogo,
-  eden_conveyancing: edenConveyancingLogo,
+  farnworth_rose:
+    "https://uploads-ssl.webflow.com/644244ec3d142e0be4b0a381/6470b414937a5e96de042cd9_farnworth%20rose%20logo.png",
+  fieldings_porter:
+    "https://uploads-ssl.webflow.com/644244ec3d142e0be4b0a381/6470b41585072710b1f6590d_fieldings%20porter%20logo.png",
+  davisons_law:
+    "https://uploads-ssl.webflow.com/644244ec3d142e0be4b0a381/6470b415d3b6b46a21d50ab8_davisons%20logo.png",
+  ctt_law:
+    "https://uploads-ssl.webflow.com/644244ec3d142e0be4b0a381/6470b4148f24096486fb6aaf_ctt%20logo.png",
+  eden_conveyancing:
+    "https://uploads-ssl.webflow.com/644244ec3d142e0be4b0a381/6470b4147bca0de38576511f_eden%20logo.png",
 };
 
 let state = {

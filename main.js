@@ -19,11 +19,9 @@ document.querySelector("#js-container").innerHTML = `
             <h3 class="section-large-h3">Find your new compass approved conveyancer within your area</h3>
             <div class="spacer-sm"></div>
             <p class="section-large-paragraph">Our conveyancers can save on average 30% on stamp duty tax.</p>
-            <div class="spacer-lg"></div>
           </div>
           <div id="section-dynamic-content" class="section-dynamic-content">
-            <img id="section-partner-logo" class="section-partner-logo hidden" src="" alt=""/>
-            <div class="spacer-lg"></div>
+            <img id="section-partner-logo" class="section-partner-logo hidden" src="" alt="Partner logo"/>
             <div id="section-description" class="section-description"></div>
             <div class="spacer-md"></div>
             <a class="partner-link" id="partner-link" href="" target="__blank"></a>
