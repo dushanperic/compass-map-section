@@ -112,6 +112,10 @@ button:focus-visible {
   padding: 0;
 }
 
+img.hidden {
+  display: none;
+}
+
 #js-section {
   width: 100%;
 }
@@ -151,6 +155,8 @@ button:focus-visible {
 }
 
 .section-partner-logo {
+  width: 100%;
+  max-width: 250px;
 }
 
 .grid-item {
@@ -158,17 +164,61 @@ button:focus-visible {
   height: auto;
 }
 
+/* MAP DOTS */
 .dot {
   width: calc(50vw / 44);
   height: calc(50vw / 44);
-  margin: calc((50vw / 44) / 6);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  background-color: var(--dot-default-bg);
-  border-radius: 100%;
   cursor: pointer;
+  z-index: 10;
 }
 
+.dot-inner {
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  background-color: var(--dot-default-bg);
+  border-radius: 100%;
+}
+
+.dot.hidden > .dot-inner {
+  background-color: transparent !important;
+  opacity: 0;
+}
+
+.dot.highlight > .dot-inner {
+  background-color: var(--dot-highlight-bg);
+}
+
+.dot.enabled > .dot-inner {
+  background-color: var(--dot-enabled-bg);
+}
+
+.dot.disabled > .dot-inner {
+  background-color: var(--dot-disabled-bg);
+}
+
+.dot.muted > .dot-inner {
+  background-color: var(--dot-disabled-bg);
+}
+
+.dot.enabled_muted > .dot-inner {
+  background-color: var(--dot-enabled-muted-bg);
+}
+
+.row {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: auto;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+/* REGION TOOLTIP */
 [data-title]:hover:after {
   opacity: 1;
   transition: all 0.1s ease 0.5s;
@@ -197,48 +247,14 @@ button:focus-visible {
   position: relative;
 }
 
-.hidden {
-  background-color: transparent !important;
-  opacity: 0;
-}
-
-.highlight {
-  background-color: var(--dot-highlight-bg);
-}
-
-.enabled {
-  background-color: var(--dot-enabled-bg);
-}
-
-.disabled {
-  background-color: var(--dot-disabled-bg);
-}
-
-.muted {
-  background-color: var(--dot-disabled-bg);
-}
-
-.enabled_muted {
-  background-color: var(--dot-enabled-muted-bg);
-}
-
-.row {
-  margin: 0;
-  padding: 0;
-  height: auto;
-  width: auto;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-}
-
-/* TOOLTIP */
+/* TOOLTIP WITH LOCATION CONTENT */
 
 .tooltip {
   position: absolute;
   border-radius: 6px;
   width: 269px;
   transform: translateX(-100%) translateY(-50%);
+  z-index: 100;
 }
 
 .tooltip-content {
@@ -289,7 +305,7 @@ button:focus-visible {
   color: var(--color-light);
 }
 
-.partner-link::before {
+.labeled::before {
   content: "Partner";
   background-color: var(--dot-enabled-bg);
   color: var(--color-dark);
@@ -323,12 +339,18 @@ button:focus-visible {
   #map-section {
     height: 100%;
     padding: 75px 50px 166px;
+    position: relative;
   }
 
   .dot {
     width: calc(25vw / 44);
     height: calc(25vw / 44);
-    margin: calc((25vw / 44) / 6);
+    /* margin: calc((25vw / 44) / 6); */
+  }
+
+  .dot-inner {
+    width: calc(100% - 3px);
+    height: calc(100% - 3px);
   }
 
   .grid-item {
@@ -373,7 +395,7 @@ button:focus-visible {
   .dot {
     width: calc(25vw / 44);
     height: calc(25vw / 44);
-    margin: calc((25vw / 44) / 6);
+    /* margin: calc((25vw / 44) / 6); */
   }
 
   .grid-item {
