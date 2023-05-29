@@ -1,5 +1,4 @@
 import "./style.css";
-import { mapStr } from "./data";
 import { initDOM } from "./dom";
 
 document.querySelector("#js-container").innerHTML = `
@@ -33,4 +32,4 @@ document.querySelector("#js-container").innerHTML = `
   </section>
 `;
 
-initDOM(document.querySelector("#map"), { xCount: 44, yCount: 54, mapStr });
+initDOM(document.querySelector("#map"));

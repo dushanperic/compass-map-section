@@ -1,11 +1,11 @@
-import { locationCords } from "./data";
+import { locationCords, mapStr } from "./data";
 import {
   throttle,
   getDOMElements,
   parseAttributes,
   handleTooltip,
-  drawMap,
   removeTooltip,
+  drawMap,
 } from "./utills";
 
 import davisonsLogo from "/davisons-logo-new.svg";
@@ -170,16 +170,11 @@ const updateDOM = () => {
   }
 };
 
-export function initDOM(rootElement, mapCfg) {
-  drawMap(rootElement, mapCfg);
-
+export function initDOM(rootElement) {
+  drawMap(document.querySelector("#map"), { xCount: 44, yCount: 54, mapStr });
   rootElement.addEventListener("click", handleClick);
   rootElement.addEventListener("mouseleave", (e) => handleMouseLeave(e));
   rootElement.addEventListener("mousemove", (e) =>
     throttle(handleMouseMove(e), throttleTime)
-  );
-
-  window.addEventListener("resize", () =>
-    throttle(drawMap(rootElement, mapCfg), throttleTime)
   );
 }
