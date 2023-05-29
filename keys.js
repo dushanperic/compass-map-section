@@ -1,15 +1,3 @@
-export const DOM_CLASS = {
-  MAP_SECTION: "map-section",
-  SECTION_GRID: "section-grid",
-};
-
-export const DOM_ID = {
-  MAP_ROOT: "map-root",
-  SECTION_GRID: "section-grid",
-  SECTION_TITLE: "section-grid",
-  SECTION_GRID: "section-grid",
-};
-
 export const DOM_ATTR = {
   ATTR_LOCATION: "data-location",
   ATTR_SECTION: "data-section",

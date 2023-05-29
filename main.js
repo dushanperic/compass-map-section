@@ -2,18 +2,18 @@ import "./style.css";
 import { initDOM } from "./dom";
 
 document.querySelector("#js-container").innerHTML = `
-  <section class="map-section" id="map-section">
-    <span class="section-label">Our platform</span>
-    <div class="spacer-lg"></div>
+  <section id="map-section">
     <div class="section-grid">
     <div class="grid-item map-container">
-      <div class="item-container">
+      <div class="item-container content-flex">
         <div id="map"></div>
       </div>
     </div>
     <div class="grid-item content-container">
         <div class="item-container content-flex">
           <div>
+            <span class="section-label">Our platform</span>
+            <div class="spacer-lg"></div>
             <h3 class="section-title">Find your new compass approved conveyancer within your area</h3>
             <div class="spacer-sm"></div>
             <p class="section-subtitle">Our conveyancers can save on average 30% on stamp duty tax.</p>
