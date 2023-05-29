@@ -155,7 +155,7 @@ button:focus-visible {
 
 .grid-item {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .dot {
@@ -166,7 +166,6 @@ button:focus-visible {
   position: relative;
   background-color: var(--dot-default-bg);
   border-radius: 100%;
-  transition: all 175ms;
   cursor: pointer;
 }
 
@@ -268,7 +267,100 @@ button:focus-visible {
   margin-bottom: 14px;
 }
 
-@media only screen and (min-width: 900px) {
+/* SPACERS */
+.spacer-sm {
+  height: 10px;
+}
+
+.spacer-md {
+  height: 18px;
+}
+
+.spacer-lg {
+  height: 20px;
+}
+
+.spacer-xl {
+  height: 35px;
+}
+
+/* PARTNER LINK WITH LABEL */
+.partner-link {
+  color: var(--color-light);
+}
+
+.partner-link::before {
+  content: "Partner";
+  background-color: var(--dot-enabled-bg);
+  color: var(--color-dark);
+  padding: 0.5rem;
+  border-radius: 100px;
+  margin-right: 20px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    /* transform: translateY(5px); */
+  }
+
+  to {
+    opacity: 1;
+    /* transform: none; */
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 450ms ease-out;
+}
+
+@media only screen and (min-width: 1200px) {
+  #js-section {
+    min-height: 100vh;
+  }
+
+  #map-section {
+    height: 100%;
+    padding: 75px 50px 166px;
+  }
+
+  .dot {
+    width: calc(25vw / 44);
+    height: calc(25vw / 44);
+    margin: calc((25vw / 44) / 6);
+  }
+
+  .grid-item {
+    width: 100%;
+    height: 100%;
+  }
+
+  .section-grid {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .grid-item {
+    display: block;
+    width: 50%;
+  }
+
+  .map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content-flex {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (min-width: 1900px) {
   #js-section {
     min-height: 100vh;
   }
@@ -310,52 +402,21 @@ button:focus-visible {
     height: 100%;
     justify-content: space-between;
   }
-}
 
-/* PARTNER LINK WITH LABEL */
-.partner-link {
-  color: var(--color-light);
-}
-
-.partner-link::before {
-  content: "Partner";
-  background-color: var(--dot-enabled-bg);
-  color: var(--color-dark);
-  padding: 0.5rem;
-  border-radius: 100px;
-  margin-right: 20px;
-}
-
-/* SPACERS */
-.spacer-sm {
-  height: 23px;
-}
-
-.spacer-md {
-  height: 35px;
-}
-
-.spacer-lg {
-  height: 41px;
-}
-
-.spacer-xl {
-  height: 71px;
-}
-
-/* ANIMATION */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    /* transform: translateY(5px); */
+  /* SPACERS */
+  .spacer-sm {
+    height: 23px;
   }
 
-  to {
-    opacity: 1;
-    /* transform: none; */
+  .spacer-md {
+    height: 35px;
   }
-}
 
-.fadeIn {
-  animation: fadeIn 450ms ease-out;
+  .spacer-lg {
+    height: 41px;
+  }
+
+  .spacer-xl {
+    height: 71px;
+  }
 }
