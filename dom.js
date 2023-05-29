@@ -1,11 +1,11 @@
-import { locationCords } from "./data";
+import { locationCords, mapStr } from "./data";
 import {
   throttle,
   getDOMElements,
   parseAttributes,
   handleTooltip,
-  drawMap,
   removeTooltip,
+  drawMap,
 } from "./utills";
 
 import davisonsLogo from "/davisons-logo-new.svg";
@@ -42,6 +42,7 @@ let state = {
 const handleClick = (e) => {
   if (
     !e.target.classList.contains("dot") ||
+    !e.target.classList.contains("dot-inner") ||
     e.target.classList.contains("hidden")
   )
     return;
@@ -57,7 +58,12 @@ const handleMouseMove = (e) => {
     return;
   }
 
-  const { region, mapIndex } = parseAttributes(e.target);
+  const testEl = e.target.classList.contains("dot-inner")
+    ? e.target.parentElement
+    : e.target;
+
+  const { region, mapIndex } = parseAttributes(testEl);
+
   const [row, col] = mapIndex.split("-");
   const hoveredItem = locationCords.find(
     (item) => item.row == row && item.col == col
@@ -153,6 +159,7 @@ const updateDOM = () => {
     if (state.currentSection) {
       if (partnerLogoImage) {
         partnerLogoImage.src = PARTNER_LOGO[state?.currentSection.logo];
+        partnerLogoImage.classList.remove("hidden");
       }
 
       if (dynamicContentContainer) {
@@ -160,6 +167,7 @@ const updateDOM = () => {
       }
 
       sectionDescription.innerHTML = state?.currentSection?.description;
+      partnerLink.classList.add("labeled");
       partnerLink.setAttribute("href", state?.currentSection?.url);
       partnerLink.innerHTML = state?.currentSection?.url;
 
@@ -170,16 +178,11 @@ const updateDOM = () => {
   }
 };
 
-export function initDOM(rootElement, mapCfg) {
-  drawMap(rootElement, mapCfg);
-
+export function initDOM(rootElement) {
+  drawMap(document.querySelector("#map"), { xCount: 44, yCount: 54, mapStr });
   rootElement.addEventListener("click", handleClick);
   rootElement.addEventListener("mouseleave", (e) => handleMouseLeave(e));
   rootElement.addEventListener("mousemove", (e) =>
     throttle(handleMouseMove(e), throttleTime)
-  );
-
-  window.addEventListener("resize", () =>
-    throttle(drawMap(rootElement, mapCfg), throttleTime)
   );
 }

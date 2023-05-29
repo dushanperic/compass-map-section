@@ -156,6 +156,10 @@ export const drawMap = (rootElement, cfg) => {
     // Create cols
     for (let y = 0; y < xCount; y++) {
       const dotEl = document.createElement("div");
+      const dotElInner = document.createElement("div");
+      dotElInner.classList.add("dot-inner");
+      dotEl.append(dotElInner);
+
       const matchingEl = mapData?.[i]?.find((item) => item._index == y);
       const activeDot = locationCords.find(
         (item) => item.row === i && item.col === y
