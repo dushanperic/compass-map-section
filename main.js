@@ -42,7 +42,7 @@ document.querySelector("#js-container").innerHTML = `
                 src=""
                 alt="Partner logo"
               />
-              <div id="section-description text-size-medium" class="section-description"></div>
+              <div id="section-description" class="section-description text-size-medium"></div>
               <div class="spacer-md"></div>
               <a
                 class="partner-link text-size-medium"
