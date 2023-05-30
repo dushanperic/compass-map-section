@@ -1,6 +1,5 @@
 import { REGION, REGION_STRING } from "./keys";
 import { locationCords } from "./data";
-import { createTooltip } from "./tooltip";
 
 let throttlePause;
 
@@ -15,6 +14,10 @@ export const throttle = (callback, time) => {
 };
 
 export const getDOMElements = () => {
+  const tooltip = document.getElementById("tooltip-test");
+  const tooltipTitle = document.getElementById("tooltip-test-title");
+  const tooltipList = document.getElementById("tooltip-test-list");
+
   const dots = document.querySelectorAll(".dot");
   const sectionDescription = document.getElementById("section-description");
   const partnerLogoImage = document.getElementById("section-partner-logo");
@@ -29,6 +32,9 @@ export const getDOMElements = () => {
     sectionDescription,
     partnerLogoImage,
     partnerLink,
+    tooltip,
+    tooltipTitle,
+    tooltipList,
   };
 };
 
@@ -42,39 +48,6 @@ export const parseAttributes = (el) => {
     tooltipData: tooltipData ? JSON.parse(tooltipData) : null,
     mapIndex: mapIndex ? mapIndex : null,
   };
-};
-
-export const createTootipElement = (tooltip) => {
-  const tooltipEl = document.createElement("div");
-  tooltipEl.setAttribute("id", `tooltip-${tooltip.id}`);
-  tooltipEl.setAttribute("class", "tooltip");
-  tooltipEl.innerHTML = JSON.stringify(tooltip);
-
-  return { tooltipEl };
-};
-
-export const handleTooltip = (currentTooltip, position) => {
-  removeTooltip();
-
-  if (!currentTooltip) {
-    return;
-  }
-
-  const existingTooltip = document.querySelector(
-    `#tooltip-${currentTooltip?.id}`
-  );
-
-  if (existingTooltip) {
-    return null;
-  }
-
-  const tooltipEl = createTooltip(currentTooltip);
-
-  tooltipEl.style.left = position.x;
-  tooltipEl.style.top = position.y;
-
-  const map = document.getElementById("map");
-  map.append(tooltipEl);
 };
 
 export const getMapData = (str) => {
