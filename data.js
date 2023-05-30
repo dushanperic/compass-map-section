@@ -5,6 +5,7 @@ const locationCords = [
   {
     row: 31,
     col: 26,
+    key: "farnworth_rose",
     tooltip: {
       id: "1",
       title: "Farnworth rose",
@@ -24,6 +25,7 @@ const locationCords = [
   {
     row: 34,
     col: 26,
+    key: "fieldings_porter",
     tooltip: {
       id: "2",
       title: "Fieldings Porter",
@@ -43,6 +45,7 @@ const locationCords = [
   {
     row: 37,
     col: 27,
+    key: "davisons_law",
     tooltip: {
       id: "3",
       title: "Davisons Law",
@@ -60,6 +63,7 @@ const locationCords = [
   {
     row: 38,
     col: 28,
+    key: "davisons_law",
     tooltip: {
       id: "4",
       title: "Davisons Law",
@@ -79,6 +83,7 @@ const locationCords = [
   {
     row: 39,
     col: 27,
+    key: "davisons_law",
     tooltip: {
       id: "5",
       title: "Davisons Law",
@@ -96,6 +101,7 @@ const locationCords = [
   {
     row: 39,
     col: 28,
+    key: "davisons_law",
     tooltip: {
       id: "6",
       title: "Davisons Law",
@@ -115,6 +121,7 @@ const locationCords = [
   {
     row: 40,
     col: 28,
+    key: "davisons_law",
     tooltip: {
       id: "7",
       title: "Davisons Law",
@@ -137,6 +144,7 @@ const locationCords = [
   {
     row: 40,
     col: 29,
+    key: "davisons_law",
     tooltip: {
       id: "8",
       title: "Davisons Law",
@@ -156,6 +164,7 @@ const locationCords = [
   {
     row: 41,
     col: 29,
+    key: "davisons_law",
     tooltip: {
       id: "9",
       title: "Davisons Law",
@@ -175,6 +184,7 @@ const locationCords = [
   {
     row: 41,
     col: 30,
+    key: "ctt_law",
     tooltip: {
       id: "9",
       title: "CTT Law",
@@ -192,6 +202,7 @@ const locationCords = [
   {
     row: 42,
     col: 28,
+    key: "davisons_law",
     tooltip: {
       id: "9",
       title: "Davisons Law",
@@ -211,6 +222,7 @@ const locationCords = [
   {
     row: 46,
     col: 34,
+    key: "davisons_law",
     tooltip: {
       id: "9",
       title: "Davisons Law",
@@ -228,6 +240,7 @@ const locationCords = [
   {
     row: 47,
     col: 26,
+    key: "eden_conveyancing",
     tooltip: {
       id: "9",
       title: "Eden Conveyancing",

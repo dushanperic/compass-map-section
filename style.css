@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "Mona Sans";
+  src: url("Mona-Sans.woff2") format("woff2 supports variations"),
+    url("Mona-Sans.woff2") format("woff2-variations");
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+}
+
+html {
+  font-family: "Mona Sans";
+}
+
 :root {
   --dot-default-bg: #828584;
   --dot-highlight-bg: #abeedc;
@@ -47,6 +59,12 @@ img.hidden {
   width: 100%;
 }
 
+.map-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .section-grid {
   width: 100%;
 }
@@ -54,6 +72,7 @@ img.hidden {
 .section-partner-logo {
   width: 100%;
   max-width: 203px;
+  display: none;
 }
 
 .grid-item {
@@ -63,23 +82,20 @@ img.hidden {
 
 /* TYPOGRAPHY */
 .section-label {
-  font-size: 10px;
+  font-size: 1rem;
   color: var(--color-light);
 }
 
 .section-title {
-  font-family: Mona sans, sans-serif;
   font-size: 1.9rem;
   font-weight: 600;
   line-height: 1.2;
   color: var(--color-light);
-  max-width: 46rem;
 }
 
 .section-subtitle {
   font-size: 0.87rem;
   line-height: 1.3;
-  max-width: 528px;
   font-weight: 300;
   color: var(--color-light);
 }
@@ -105,14 +121,14 @@ img.hidden {
 }
 
 .dot {
-  width: calc(50vw / 44);
-  height: calc(50vw / 44);
+  width: calc(100vw / 44);
+  height: calc(100vw / 44);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   position: relative;
   cursor: pointer;
-  z-index: 10;
+  /* z-index: 10; */
 }
 
 .dot-inner {
@@ -177,6 +193,44 @@ img.hidden {
 }
 
 /* TOOLTIP WITH LOCATION CONTENT */
+
+.tooltip-test {
+  border-radius: 6px;
+  width: 100%;
+  background: var(--color-dark);
+  border-radius: 6px;
+  width: auto;
+  margin-right: 1rem;
+  padding: 1rem;
+  z-index: 999999;
+}
+
+.tooltip-test-title {
+  display: block;
+  color: var(--dot-enabled-bg);
+  font-size: 16px;
+  line-height: 21px;
+  margin-bottom: 20px;
+}
+
+.tooltip-test-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.tooltip-test-list li {
+  width: 100%;
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 14px;
+  padding-left: 0;
+  margin-left: 0;
+  color: var(--color-light);
+}
+
+/* /////// */
 
 .tooltip {
   position: absolute;
@@ -250,6 +304,36 @@ img.hidden {
   text-transform: uppercase;
 }
 
+/* SMALL DEVICE BUTTONS */
+.sm-buttons-wrapper {
+  /* display: flex;
+  flex-wrap: wrap; */
+  width: 100%;
+  height: auto;
+}
+
+.logo-button {
+  background-color: transparent;
+  width: auto;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  height: 6rem;
+  transition: all 200ms ease;
+  opacity: 0.7;
+}
+
+.logo-button:focus {
+  opacity: 1;
+}
+
+.logo-button img {
+  width: auto;
+  height: 100%;
+}
+
 /* ANIMATION */
 @keyframes fadeIn {
   from {
@@ -263,6 +347,28 @@ img.hidden {
 
 .fadeIn {
   animation: fadeIn 450ms ease-out;
+}
+
+.sm-visible {
+  display: block;
+}
+
+.lg-visible {
+  display: none;
+}
+
+@media only screen and (min-width: 500px) {
+  .dot {
+    width: calc(80vw / 44);
+    height: calc(80vw / 44);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .dot {
+    width: calc(60vw / 44);
+    height: calc(60vw / 44);
+  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -316,16 +422,17 @@ img.hidden {
   }
 
   .section-partner-logo {
+    display: block;
     max-width: 240px;
   }
 
   /* TYPOGRAPHY */
   .section-label {
-    font-size: 21px;
+    font-size: 1.5rem;
   }
 
   .section-title {
-    font-size: 2.75rem;
+    font-size: 2.25rem;
   }
 
   .section-subtitle {
@@ -334,6 +441,40 @@ img.hidden {
 
   .section-description {
     font-size: 1rem;
+  }
+
+  /* SMALL DEVICE BUTTONS */
+  .sm-buttons-wrapper {
+    display: none;
+  }
+
+  /* TOOLTIP TEST*/
+  .tooltip-test {
+    position: absolute;
+    display: none;
+    transform: translateX(-100%);
+    /* transform: translateX(-100%); */
+  }
+
+  .tooltip-test.visible {
+    display: block;
+  }
+
+  .tooltip-test-title {
+  }
+
+  .tooltip-test-list {
+  }
+
+  .tooltip-test-list li {
+  }
+
+  .sm-visible {
+    display: none;
+  }
+
+  .lg-visible {
+    display: block;
   }
 }
 
@@ -383,23 +524,20 @@ img.hidden {
   }
 
   /* TYPOGRAPHY */
-  .section-label {
-    font-size: 21px;
-  }
 
   .section-title {
-    font-size: 3.75rem;
+    font-size: 3rem;
   }
 
   .section-subtitle {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 
   .section-description {
-    font-size: 1.31rem;
+    font-size: 1.1rem;
   }
 
   .section-partner-logo {
-    max-width: 437px;
+    max-width: 300px;
   }
 }
