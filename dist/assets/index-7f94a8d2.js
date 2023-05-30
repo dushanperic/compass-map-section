@@ -3,7 +3,7 @@
       <div class="sm-visible">
         <span class="section-label">Our platform</span>
         <div class="spacer-lg"></div>
-        <h3 class="section-title heading-xlarge-hero">
+        <h3 class="section-title heading-style-h4">
           Find your new compass approved conveyancer within your area
         </h3>
         <div class="spacer-sm"></div>
@@ -23,7 +23,7 @@
             <div class="lg-visible">
               <span class="section-label">Our platform</span>
               <div class="spacer-lg"></div>
-              <h3 class="section-title heading-xlarge-hero">
+              <h3 class="section-title heading-style-h4">
                 Find your new compass approved conveyancer within your area
               </h3>
               <div class="spacer-sm"></div>
@@ -39,7 +39,7 @@
                 src=""
                 alt="Partner logo"
               />
-              <div id="section-description text-size-medium" class="section-description"></div>
+              <div id="section-description" class="section-description text-size-medium"></div>
               <div class="spacer-md"></div>
               <a
                 class="partner-link text-size-medium"
