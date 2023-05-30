@@ -189,10 +189,10 @@ const updateDOM = () => {
         dot.classList.add("highlight");
 
         if (state.currentTooltip) {
-          tooltipTitle.innerHTML = state.currentTooltip.title;
           tooltip.style.left = `${state.client.x}px`;
           tooltip.style.top = `${state.client.y}px`;
           tooltip.classList.add("visible");
+          tooltipTitle.innerHTML = state.currentTooltip.title;
           tooltipList.innerHTML = "";
 
           if (state.currentTooltip.locations.length) {
@@ -210,7 +210,6 @@ const updateDOM = () => {
             });
           }
         } else {
-          removeTooltip();
           tooltip.classList.remove("visible");
         }
 

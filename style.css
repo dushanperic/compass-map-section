@@ -87,25 +87,25 @@ img.hidden {
 }
 
 .section-title {
-  font-size: 1.9rem;
-  font-weight: 600;
-  line-height: 1.2;
-  color: var(--color-light);
+  /* font-size: 1.9rem;
+  font-weight: 600; */
+  /* line-height: 1.2; */
+  color: var(--color-light) !important;
 }
 
 .section-subtitle {
-  font-size: 0.87rem;
+  /* font-size: 0.87rem;
   line-height: 1.3;
-  font-weight: 300;
-  color: var(--color-light);
+  font-weight: 300; */
+  color: var(--color-light) !important;
 }
 
 .section-description {
-  width: 100%;
+  /* width: 100%;
   max-width: 673px;
   font-size: 0.65rem;
-  line-height: 1.5;
-  color: var(--color-light);
+  line-height: 1.5; */
+  color: var(--color-light) !important;
 }
 
 /* MAP DOTS */
@@ -432,15 +432,15 @@ img.hidden {
   }
 
   .section-title {
-    font-size: 2.25rem;
+    /* font-size: 2.25rem; */
   }
 
   .section-subtitle {
-    font-size: 1.4rem;
+    /* font-size: 1.4rem; */
   }
 
   .section-description {
-    font-size: 1rem;
+    /* font-size: 1rem; */
   }
 
   /* SMALL DEVICE BUTTONS */
@@ -526,15 +526,15 @@ img.hidden {
   /* TYPOGRAPHY */
 
   .section-title {
-    font-size: 3rem;
+    /* font-size: 3rem; */
   }
 
   .section-subtitle {
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
   }
 
   .section-description {
-    font-size: 1.1rem;
+    /* font-size: 1.1rem; */
   }
 
   .section-partner-logo {
