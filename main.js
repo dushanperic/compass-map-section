@@ -6,7 +6,7 @@ document.querySelector("#js-container").innerHTML = `
       <div class="sm-visible">
         <span class="section-label">Our platform</span>
         <div class="spacer-lg"></div>
-        <h3 class="section-title heading-xlarge-hero">
+        <h3 class="section-title heading-style-h4">
           Find your new compass approved conveyancer within your area
         </h3>
         <div class="spacer-sm"></div>
@@ -26,7 +26,7 @@ document.querySelector("#js-container").innerHTML = `
             <div class="lg-visible">
               <span class="section-label">Our platform</span>
               <div class="spacer-lg"></div>
-              <h3 class="section-title heading-xlarge-hero">
+              <h3 class="section-title heading-style-h4">
                 Find your new compass approved conveyancer within your area
               </h3>
               <div class="spacer-sm"></div>
