@@ -14,6 +14,7 @@ document.querySelector("#js-container").innerHTML = `
           Our conveyancers can save on average 30% on stamp duty tax.
         </p>
         <div class="spacer-lg"></div>
+        <div id="buttons-wrapper" class="sm-buttons-wrapper"></div>
       </div>
       <div class="section-grid">
         <div class="grid-item map-container">
@@ -34,7 +35,7 @@ document.querySelector("#js-container").innerHTML = `
                 Our conveyancers can save on average 30% on stamp duty tax.
               </p>
               </div>
-            <div id="buttons-wrapper" class="sm-buttons-wrapper"></div>
+            
             <div id="section-dynamic-content" class="section-dynamic-content">
               <img
                 id="section-partner-logo"
