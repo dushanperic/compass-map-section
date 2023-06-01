@@ -82,8 +82,6 @@ const handleButtonClick = (e) => {
 
   const { region, mapIndex } = parseAttributes(DOMElement);
 
-  console.log("DOMElement", DOMElement);
-
   state = {
     ...state,
     ...{
