@@ -67,6 +67,7 @@ export const renderButtons = () => {
 
 const handleButtonClick = (e) => {
   const allButtons = document.querySelectorAll(".logo-button");
+  const target = document.querySelector("#section-partner-logo");
 
   allButtons.forEach((button) => button.classList.remove("active"));
   e.currentTarget.classList.add("active");
@@ -91,6 +92,11 @@ const handleButtonClick = (e) => {
       currentTooltip: dataItem.tooltip,
     },
   };
+
+  target.scrollIntoView({
+    behavior: "smooth",
+    block: "end",
+  });
 
   handleNewRegion();
   handleNewLocation();
@@ -210,6 +216,7 @@ function handleNewSection() {
     getDOMElements();
 
   sectionDescription.innerHTML = state.currentSection.description;
+  partnerLogoImage.classList.remove("hidden");
   partnerLogoImage.src = PARTNER_LOGO[state?.currentSection.logo];
   partnerLink.classList.add("labeled");
   partnerLink.setAttribute("href", state?.currentSection?.url);
