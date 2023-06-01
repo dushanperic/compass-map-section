@@ -92,8 +92,6 @@ const handleButtonClick = (e) => {
     },
   };
 
-  console.log(state);
-
   handleNewRegion();
   handleNewLocation();
   handleDotsUpdate();

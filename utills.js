@@ -272,8 +272,6 @@ export const createMobileTooltip = (data) => {
       ul.setAttribute("class", "mobile-tooltip-list");
       ul.innerHTML = `<h4 class="dot-list-title">${title}</h4>`;
 
-      console.log("item", { item, davidsonArray });
-
       item.tooltip.locations.forEach((location) => {
         const liEl = document.createElement("li");
         liEl.classList.add("dot-tooltip-li");
