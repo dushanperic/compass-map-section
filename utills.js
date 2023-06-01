@@ -232,10 +232,10 @@ export const removeElement = (selector) => {
 };
 
 export const createTooltip = (data) => {
-  const { title } = data;
+  const { title, locations, id } = data;
   const el = document.createElement("div");
   el.setAttribute("class", "dot-tooltip-li dot-tooltip");
-  el.setAttribute("id", `dot-tooltip-${data.id}`);
+  el.setAttribute("id", `dot-tooltip-${id}`);
   const tooltipInnerHTML = `
     <h4 class="dot-list-title">${title}</h4>
   `;
@@ -243,7 +243,7 @@ export const createTooltip = (data) => {
   const ul = document.createElement("ul");
   ul.setAttribute("class", "dot-tooltip-list");
 
-  data.locations.forEach((listItem) => {
+  locations?.forEach((listItem) => {
     const liEl = document.createElement("li");
     liEl.classList.add("dot-tooltip-li");
 
