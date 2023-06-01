@@ -3,6 +3,7 @@ const mapStr =
 
 const locationCords = [
   {
+    map_index: "31-26",
     row: 31,
     col: 26,
     key: "farnworth_rose",
@@ -10,9 +11,7 @@ const locationCords = [
       id: "1",
       title: "Farnworth rose",
       locations: [
-        [
-          "First Floor Finance House, 17 Kenyon Road, Lomeshaye Estate, Nelson, BB9 5SP",
-        ],
+        "First Floor Finance House, 17 Kenyon Road, Lomeshaye Estate, Nelson, BB9 5SP",
       ],
     },
     section: {
@@ -23,6 +22,7 @@ const locationCords = [
     },
   },
   {
+    map_index: "34-26",
     row: 34,
     col: 26,
     key: "fieldings_porter",
@@ -30,9 +30,7 @@ const locationCords = [
       id: "2",
       title: "Fieldings Porter",
       locations: [
-        [
-          "First Floor Finance House, 17 Kenyon Road, Lomeshaye Estate, Nelson, BB9 5SP",
-        ],
+        "First Floor Finance House, 17 Kenyon Road, Lomeshaye Estate, Nelson, BB9 5SP",
       ],
     },
     section: {
@@ -43,6 +41,7 @@ const locationCords = [
     },
   },
   {
+    map_index: "37-27",
     row: 37,
     col: 27,
     key: "davisons_law",
@@ -50,7 +49,7 @@ const locationCords = [
       id: "3",
       title: "Davisons Law",
       locations: [
-        ["Stafford Office - Friars Mill, Friars Terrace, Stafford, ST17 4AU"],
+        "Stafford Office - Friars Mill, Friars Terrace, Stafford, ST17 4AU",
       ],
     },
     section: {
@@ -61,6 +60,7 @@ const locationCords = [
     },
   },
   {
+    map_index: "38-28",
     row: 38,
     col: 28,
     key: "davisons_law",
@@ -68,9 +68,7 @@ const locationCords = [
       id: "4",
       title: "Davisons Law",
       locations: [
-        [
-          "Lichfield Office - 2a Bore Street, Lichfield, Staffordshire, WS13 6LL",
-        ],
+        "Lichfield Office - 2a Bore Street, Lichfield, Staffordshire, WS13 6LL",
       ],
     },
     section: {
@@ -81,6 +79,7 @@ const locationCords = [
     },
   },
   {
+    map_index: "39-27",
     row: 39,
     col: 27,
     key: "davisons_law",
@@ -88,7 +87,7 @@ const locationCords = [
       id: "5",
       title: "Davisons Law",
       locations: [
-        ["Wolverhampton Office - 21 Waterloo Road, Wolverhampton, WV1 4DJ"],
+        "Wolverhampton Office - 21 Waterloo Road, Wolverhampton, WV1 4DJ",
       ],
     },
     section: {
@@ -99,6 +98,7 @@ const locationCords = [
     },
   },
   {
+    map_index: "39-28",
     row: 39,
     col: 28,
     key: "davisons_law",
@@ -106,9 +106,7 @@ const locationCords = [
       id: "6",
       title: "Davisons Law",
       locations: [
-        [
-          "Sutton Coldfield Office - 254 Lichfield Road, Four Oaks, Sutton Coldfield, B74 2UH",
-        ],
+        "Sutton Coldfield Office - 254 Lichfield Road, Four Oaks, Sutton Coldfield, B74 2UH",
       ],
     },
     section: {
@@ -119,6 +117,7 @@ const locationCords = [
     },
   },
   {
+    map_index: "40-28",
     row: 40,
     col: 28,
     key: "davisons_law",
@@ -126,12 +125,10 @@ const locationCords = [
       id: "7",
       title: "Davisons Law",
       locations: [
-        [
-          "Colmore Row Office - 75-77 Colmore Row, Birmingham, B3 2AP",
-          "Cotteridge Office - 1886-1888 Pershore Road, Cotteridge, Birmingham, B30 3AS",
-          "Weoley Castle Office - 63-65 Beckbury Road, Weoley Castle, Birmingham, B29 5HS",
-          "Edgbaston Office - Sycamore House, 54 Calthorpe Road, Edgbaston, Birmingham, B15 1TH",
-        ],
+        "Colmore Row Office - 75-77 Colmore Row, Birmingham, B3 2AP",
+        "Cotteridge Office - 1886-1888 Pershore Road, Cotteridge, Birmingham, B30 3AS",
+        "Weoley Castle Office - 63-65 Beckbury Road, Weoley Castle, Birmingham, B29 5HS",
+        "Edgbaston Office - Sycamore House, 54 Calthorpe Road, Edgbaston, Birmingham, B15 1TH",
       ],
     },
     section: {
@@ -142,6 +139,7 @@ const locationCords = [
     },
   },
   {
+    map_index: "40-29",
     row: 40,
     col: 29,
     key: "davisons_law",
@@ -149,9 +147,7 @@ const locationCords = [
       id: "8",
       title: "Davisons Law",
       locations: [
-        [
-          "Solihull Office - No.4 The Courtyard, 707 Warwick Road, Solihull, B91 3DA",
-        ],
+        "Solihull Office - No.4 The Courtyard, 707 Warwick Road, Solihull, B91 3DA",
       ],
     },
     section: {
@@ -162,6 +158,7 @@ const locationCords = [
     },
   },
   {
+    map_index: "41-29",
     row: 41,
     col: 29,
     key: "davisons_law",
@@ -169,9 +166,7 @@ const locationCords = [
       id: "9",
       title: "Davisons Law",
       locations: [
-        [
-          "Leamington Spa Office - Estate House, 4 Euston Place, Leamington Spa, CV32 4LN",
-        ],
+        "Leamington Spa Office - Estate House, 4 Euston Place, Leamington Spa, CV32 4LN",
       ],
     },
     section: {
@@ -182,15 +177,14 @@ const locationCords = [
     },
   },
   {
+    map_index: "41-30",
     row: 41,
     col: 30,
     key: "ctt_law",
     tooltip: {
       id: "9",
       title: "CTT Law",
-      locations: [
-        ["Gables House, 62 Kenilworth Road, Leamington Spa, CV32 6JX"],
-      ],
+      locations: ["Gables House, 62 Kenilworth Road, Leamington Spa, CV32 6JX"],
     },
     section: {
       description:
@@ -200,6 +194,7 @@ const locationCords = [
     },
   },
   {
+    map_index: "42-28",
     row: 42,
     col: 28,
     key: "davisons_law",
@@ -207,9 +202,7 @@ const locationCords = [
       id: "9",
       title: "Davisons Law",
       locations: [
-        [
-          "Stratford Upon Avon Office - 20A Rother Street, Stratford-upon-Avon, Warwickshire, CV37 6NE",
-        ],
+        "Stratford Upon Avon Office - 20A Rother Street, Stratford-upon-Avon, Warwickshire, CV37 6NE",
       ],
     },
     section: {
@@ -220,6 +213,7 @@ const locationCords = [
     },
   },
   {
+    map_index: "46-34",
     row: 46,
     col: 34,
     key: "davisons_law",
@@ -227,7 +221,7 @@ const locationCords = [
       id: "9",
       title: "Davisons Law",
       locations: [
-        ["Streatham Office - 266-268 Streatham High Rd, London, SW16 1HS"],
+        "Streatham Office - 266-268 Streatham High Rd, London, SW16 1HS",
       ],
     },
     section: {
@@ -238,13 +232,14 @@ const locationCords = [
     },
   },
   {
+    map_index: "47-26",
     row: 47,
     col: 26,
     key: "eden_conveyancing",
     tooltip: {
       id: "9",
       title: "Eden Conveyancing",
-      locations: [["MISSING INFO"]],
+      locations: ["MISSING INFO"],
     },
     section: {
       description:

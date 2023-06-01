@@ -3,8 +3,9 @@ import {
   throttle,
   getDOMElements,
   parseAttributes,
-  removeTooltip,
+  removeElement,
   drawMap,
+  createTooltip,
 } from "./utills";
 import { REGION_STRING } from "./keys";
 
@@ -21,6 +22,16 @@ const PARTNER_LOGO = {
     "https://uploads-ssl.webflow.com/644244ec3d142e0be4b0a381/6470b4148f24096486fb6aaf_ctt%20logo.png",
   eden_conveyancing:
     "https://uploads-ssl.webflow.com/644244ec3d142e0be4b0a381/6470b4147bca0de38576511f_eden%20logo.png",
+};
+
+let state = {
+  isPaused: false,
+  mapIndex: null,
+  pauseState: false,
+  currentRegion: null,
+  currentTooltip: null,
+  currentSection: null,
+  isMobile: false,
 };
 
 export const renderButtons = () => {
@@ -53,61 +64,64 @@ export const renderButtons = () => {
   });
 };
 
-let state = {
-  pauseState: false,
-  currentRegion: null,
-  currentTooltip: null,
-  currentSection: null,
-  isMobile: false,
-  currentMapIndex: {
-    row: 0,
-    col: 0,
-  },
-  client: {
-    x: 0,
-    y: 0,
-  },
-};
-
 const handleButtonClick = (e) => {
-  const mapIndex = e.currentTarget?.getAttribute("data-dot-map-index");
-  const region = e.currentTarget?.getAttribute("data-region");
-  const dot = document.querySelector(`[data-map-index="${mapIndex}"]`);
-
-  const [row, col] = mapIndex.split("-");
-  const selectedItem = locationCords.find(
-    (item) => item.row == row && item.col == col
+  const buttonMapIndex = e.currentTarget?.getAttribute("data-dot-map-index");
+  const dataItem = locationCords.find(
+    (item) => item.map_index === buttonMapIndex
   );
+
+  const DOMEl = document.querySelector(`[data-map-index="${buttonMapIndex}"]`);
+
+  const { region, mapIndex } = parseAttributes(DOMEl);
+
+  console.log(DOMEl);
 
   state = {
     ...state,
     ...{
       currentRegion: region,
-      currentMapIndex: { row, col },
-      currentTooltip: selectedItem?.tooltip ? selectedItem.tooltip : null,
-      currentSection: selectedItem?.section ? selectedItem.section : null,
+      mapIndex: mapIndex,
+      currentSection: dataItem.section,
+      currentTooltip: dataItem.tooltip,
     },
   };
 
-  updateDOM();
+  console.log(state);
+
+  handleNewRegion();
+  handleNewLocation();
+  handleDotsUpdate();
 };
 
-const handleClick = (e) => {
-  if (
-    !e.target.classList.contains("dot") ||
-    !e.target.classList.contains("dot-inner") ||
-    e.target.classList.contains("hidden")
-  )
+const handleClick = () => {
+  if (!state.currentTooltip) {
     return;
-
-  state.pauseState = state.pauseState ? false : true;
+  }
+  state = { ...state, isPaused: !state.isPaused };
 };
 
-const handleMouseMove = (e) => {
+const handleMouseLeave = () => {
+  // TODO: Discus about state reset with UI leads
+  // state = {
+  //   isPaused: false,
+  //   mapIndex: null,
+  //   pauseState: false,
+  //   currentRegion: null,
+  //   currentTooltip: null,
+  //   currentSection: null,
+  // };
+  // resetDOM();
+};
+
+function handleMouseMove(e) {
   if (
     !e.target.classList.contains("dot") ||
     e.target.classList.contains("hidden")
   ) {
+    return;
+  }
+
+  if (state.isPaused) {
     return;
   }
 
@@ -117,141 +131,110 @@ const handleMouseMove = (e) => {
 
   const { region, mapIndex } = parseAttributes(el);
 
-  const [row, col] = mapIndex.split("-");
-  const hoveredItem = locationCords.find(
-    (item) => item.row == row && item.col == col
+  if (mapIndex === state.mapIndex) {
+    // We are on the same element, prevent state change
+    return;
+  }
+
+  state = { ...state, mapIndex };
+
+  const locationItem = locationCords.find((item) => item.map_index == mapIndex);
+
+  if (region !== state.currentRegion) {
+    state = { ...state, ...{ currentRegion: region, currentTooltip: null } };
+
+    removeElement(".dot-tooltip");
+    handleNewRegion();
+  }
+
+  if (locationItem && locationItem.tooltip) {
+    state = {
+      ...state,
+      ...{
+        currentTooltip: locationItem.tooltip,
+        currentSection: locationItem.section,
+      },
+    };
+    handleNewLocation();
+  }
+}
+
+const handleNewLocation = () => {
+  const existingEl = document.querySelector(`.dot-tooltip`);
+
+  if (existingEl) {
+    removeElement(".dot-tooltip");
+  }
+
+  const currentDotDOM = document.querySelector(
+    `[data-map-index="${state?.mapIndex}"]`
   );
 
-  state.client = {
-    y: e.clientY,
-    x: e.clientX,
-  };
+  const tooltip = createTooltip(state.currentTooltip);
+  currentDotDOM.append(tooltip);
 
-  if (JSON.stringify(state.currentMapIndex) === JSON.stringify({ row, col })) {
-    return;
-  }
-
-  if (region && region !== state.currentRegion) {
-    state = { ...state, ...{ currentRegion: region, pauseState: false } };
-  }
-
-  state = {
-    ...state,
-    ...{
-      currentMapIndex: { row, col },
-      currentTooltip: hoveredItem?.tooltip ? hoveredItem.tooltip : null,
-      currentSection: hoveredItem?.section ? hoveredItem.section : null,
-    },
-  };
-
-  if (state.pauseState) {
-    return;
-  }
-
-  updateDOM();
+  handleDotsUpdate();
+  handleNewSection();
 };
 
-const handleMouseLeave = () => {
-  state = {
-    ...state,
-    ...{
-      currentRegion: null,
-      currentMapIndex: null,
-      currentTooltip: null,
-      currentSection: null,
-    },
-  };
+function handleNewRegion() {
+  const allDots = document.querySelectorAll(`.dot`);
+  const regionDots = document.querySelectorAll(
+    `[data-region="${state?.currentRegion}"]`
+  );
 
-  updateDOM();
-};
+  allDots.forEach((dot) => {
+    dot.classList.remove("highlight");
+    dot.classList.remove("muted");
+  });
 
-const updateDOM = () => {
-  const {
-    dots,
-    sectionDescription,
-    partnerLogoImage,
-    partnerLink,
-    dynamicContentContainer,
-    tooltip,
-    tooltipTitle,
-    tooltipList,
-  } = getDOMElements();
+  regionDots.forEach((dot) => {
+    dot.classList.add("highlight");
+  });
+}
 
-  if (state.currentRegion) {
-    dots.forEach((dot) => {
-      const { region, mapIndex } = parseAttributes(dot);
-      const isEnabled = dot.classList.contains("enabled");
-      const isFromGroup =
-        mapIndex !==
-        `${state.currentMapIndex.row}-${state.currentMapIndex.col}`;
+function handleNewSection() {
+  const { sectionDescription, partnerLogoImage, partnerLink } =
+    getDOMElements();
 
-      if (region == state.currentRegion) {
-        dot.classList.add("highlight");
+  sectionDescription.innerHTML = state.currentSection.description;
+  partnerLogoImage.src = PARTNER_LOGO[state?.currentSection.logo];
+  partnerLink.classList.add("labeled");
+  partnerLink.setAttribute("href", state?.currentSection?.url);
+  partnerLink.innerHTML = state?.currentSection?.url;
+}
 
-        if (state.currentTooltip) {
-          tooltip.style.left = `${state.client.x}px`;
-          tooltip.style.top = `${state.client.y}px`;
-          tooltip.classList.add("visible");
-          tooltipTitle.innerHTML = state.currentTooltip.title;
-          tooltipList.innerHTML = "";
+function handleDotsUpdate() {
+  const { dots } = getDOMElements();
 
-          if (state.currentTooltip.locations.length) {
-            state.currentTooltip.locations.forEach((element) => {
-              const ul = document.createElement("ul");
-              ul.classList.add("tooltip-list");
-              element.map((item) => {
-                const li = document.createElement("li");
-                li.innerHTML = item;
+  dots.forEach((el) => {
+    el.classList.remove("muted");
+    el.classList.remove("enabled_muted");
 
-                ul.append(li);
-              });
+    const { mapIndex, region } = parseAttributes(el);
+    const isFromGroup =
+      region === state.currentRegion && mapIndex !== state.mapIndex;
 
-              tooltipList.append(ul);
-            });
-          }
-        } else {
-          tooltip.classList.remove("visible");
-        }
-
-        if (state.currentTooltip !== null && isEnabled && isFromGroup) {
-          dot.classList.add("enabled_muted");
-        } else {
-          dot.classList.remove("enabled_muted");
-        }
-
-        if (state.currentTooltip !== null && isFromGroup) {
-          dot.classList.add("muted");
-        } else {
-          dot.classList.remove("muted");
-        }
+    if (isFromGroup) {
+      if (el.classList.contains("enabled")) {
+        el.classList.add("enabled_muted");
       } else {
-        dot.classList.remove("highlight");
-        dot.classList.remove("muted");
-        dot.classList.remove("enabled_muted");
+        el.classList.add("muted");
       }
-    });
-
-    if (state.currentSection) {
-      if (partnerLogoImage) {
-        partnerLogoImage.src = PARTNER_LOGO[state?.currentSection.logo];
-        partnerLogoImage.classList.remove("hidden");
-      }
-
-      if (dynamicContentContainer) {
-        dynamicContentContainer.classList.add("fadeIn");
-      }
-
-      sectionDescription.innerHTML = state?.currentSection?.description;
-      partnerLink.classList.add("labeled");
-      partnerLink.setAttribute("href", state?.currentSection?.url);
-      partnerLink.innerHTML = state?.currentSection?.url;
-
-      setTimeout(() => {
-        dynamicContentContainer.classList.remove("fadeIn");
-      }, 1000);
     }
-  }
-};
+    if (state.mapIndex === mapIndex) {
+      el.classList.remove("enabled_muted");
+    }
+  });
+}
+
+// function resetDOM() {
+//   const { sectionDescription, partnerLogoImage, partnerLink } =
+//     getDOMElements();
+//   sectionDescription.innerHTML = "";
+//   partnerLogoImage.src = "";
+//   partnerLogoImage.classList.add("hidden");
+// }
 
 export function initDOM(rootElement) {
   drawMap(document.querySelector("#map"), { xCount: 44, yCount: 54, mapStr });
