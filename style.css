@@ -45,7 +45,7 @@ html {
   padding: 0;
 }
 
-img.hidden {
+.hidden {
   display: none;
 }
 
@@ -70,8 +70,8 @@ img.hidden {
 }
 
 .section-partner-logo {
-  width: 100%;
-  max-width: 203px;
+  width: auto;
+  max-height: 116px;
 }
 
 .grid-item {
@@ -201,8 +201,13 @@ img.hidden {
 
 /* PARTNER LINK WITH LABEL */
 .partner-link {
+  display: inline;
+  width: 100%;
   color: var(--color-light);
   text-decoration: none;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
 }
 
 .labeled::before {
@@ -214,7 +219,7 @@ img.hidden {
   border-radius: 100vw;
   margin-right: 1rem;
   padding: 0.25rem 1rem;
-  font-size: 1.13rem;
+  font-size: 0.8rem;
   font-weight: 500;
   text-decoration: none;
 }
@@ -296,6 +301,10 @@ img.hidden {
     min-height: 100vh;
   }
 
+  .labeled::before {
+    font-size: 1.13rem;
+  }
+
   /* MAP DOTS */
   .dot {
     width: calc(35vw / 44);
@@ -335,8 +344,8 @@ img.hidden {
   }
 
   .section-partner-logo {
-    display: block;
-    max-width: 240px;
+    width: auto;
+    max-height: 250px;
   }
 
   /* SMALL DEVICE BUTTONS */
@@ -399,7 +408,8 @@ img.hidden {
   }
 
   .section-partner-logo {
-    max-width: 300px;
+    width: auto;
+    max-height: 250px;
   }
 }
 
@@ -412,6 +422,7 @@ img.hidden {
   border-radius: 6px;
   padding: 0.5rem;
   margin-bottom: 1rem;
+  list-style: none;
 }
 
 .mobile-tooltip-list li {
@@ -420,6 +431,8 @@ img.hidden {
   font-size: 14px;
   margin-bottom: 14px;
   color: var(--color-light);
+  list-style: none;
+  padding: 0;
 }
 
 /* NEW REGION TOOLTIP */
@@ -446,6 +459,7 @@ img.hidden {
   font-size: 14px;
   margin-bottom: 14px;
   color: var(--color-light);
+  list-style: none;
 }
 
 .dot-list-title {
@@ -462,6 +476,11 @@ img.hidden {
   .dot-tooltip {
     transform: translate(-10%, -50%);
     display: block;
+  }
+
+  .dot-tooltip h4 {
+    font-size: 18px;
+    line-height: 24px;
   }
 
   .dot-tooltip-li {

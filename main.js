@@ -39,7 +39,7 @@ document.querySelector("#js-container").innerHTML = `
             <div id="section-dynamic-content" class="section-dynamic-content">
               <img
                 id="section-partner-logo"
-                class="section-partner-logo"
+                class="section-partner-logo hidden"
                 src=""
                 alt="Partner logo"
               />
