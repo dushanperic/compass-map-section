@@ -54,10 +54,7 @@ document.querySelector("#js-container").innerHTML = `
             </div>
               
             <div class="spacer-md"></div>
-            <div id="tooltip-test" class="tooltip-test">
-              <span id="tooltip-test-title" class="tooltip-test-title"></span>
-              <div id="tooltip-test-list" class="tooltip-test-list"></div>
-            </div>
+            <div id="mobile-tooltip-container" class="mobile-tooltip-container"></div>
           </div>
         </div>
       </div>

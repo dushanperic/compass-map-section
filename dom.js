@@ -6,6 +6,7 @@ import {
   removeElement,
   drawMap,
   createTooltip,
+  createMobileTooltip,
 } from "./utills";
 import { REGION_STRING } from "./keys";
 
@@ -65,16 +66,23 @@ export const renderButtons = () => {
 };
 
 const handleButtonClick = (e) => {
+  const allButtons = document.querySelectorAll(".logo-button");
+
+  allButtons.forEach((button) => button.classList.remove("active"));
+  e.currentTarget.classList.add("active");
+
   const buttonMapIndex = e.currentTarget?.getAttribute("data-dot-map-index");
   const dataItem = locationCords.find(
     (item) => item.map_index === buttonMapIndex
   );
 
-  const DOMEl = document.querySelector(`[data-map-index="${buttonMapIndex}"]`);
+  const DOMElement = document.querySelector(
+    `[data-map-index="${buttonMapIndex}"]`
+  );
 
-  const { region, mapIndex } = parseAttributes(DOMEl);
+  const { region, mapIndex } = parseAttributes(DOMElement);
 
-  console.log(DOMEl);
+  console.log("DOMElement", DOMElement);
 
   state = {
     ...state,
@@ -161,16 +169,24 @@ function handleMouseMove(e) {
 
 const handleNewLocation = () => {
   const existingEl = document.querySelector(`.dot-tooltip`);
+  const mobileTooltipContainer = document.getElementById(
+    "mobile-tooltip-container"
+  );
 
   if (existingEl) {
     removeElement(".dot-tooltip");
   }
+
+  mobileTooltipContainer.innerHTML = "";
 
   const currentDotDOM = document.querySelector(
     `[data-map-index="${state?.mapIndex}"]`
   );
 
   const tooltip = createTooltip(state.currentTooltip);
+  const mobileTooltip = createMobileTooltip(state.currentTooltip);
+
+  mobileTooltipContainer.append(mobileTooltip);
   currentDotDOM.append(tooltip);
 
   handleDotsUpdate();

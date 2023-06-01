@@ -234,12 +234,9 @@ export const removeElement = (selector) => {
 export const createTooltip = (data) => {
   const { title, locations, id } = data;
   const el = document.createElement("div");
-  el.setAttribute("class", "dot-tooltip-li dot-tooltip");
+  el.setAttribute("class", "dot-tooltip");
   el.setAttribute("id", `dot-tooltip-${id}`);
-  const tooltipInnerHTML = `
-    <h4 class="dot-list-title">${title}</h4>
-  `;
-  el.innerHTML = tooltipInnerHTML;
+  el.innerHTML = `<h4 class="dot-list-title">${title}</h4>`;
   const ul = document.createElement("ul");
   ul.setAttribute("class", "dot-tooltip-list");
 
@@ -256,4 +253,57 @@ export const createTooltip = (data) => {
   el.append(ul);
 
   return el;
+};
+
+export const createMobileTooltip = (data) => {
+  const { title, locations, id } = data;
+  const el = document.createElement("div");
+  el.setAttribute("class", "mobile-tooltip");
+  el.setAttribute("id", `mobile-tooltip-${id}`);
+  const davidsonArray = locationCords.filter((item) => {
+    return item.key === "davisons_law";
+  });
+
+  if (title === "Davisons Law") {
+    const div = document.createElement("div");
+
+    davidsonArray.forEach((item) => {
+      const ul = document.createElement("ul");
+      ul.setAttribute("class", "mobile-tooltip-list");
+      ul.innerHTML = `<h4 class="dot-list-title">${title}</h4>`;
+
+      console.log("item", { item, davidsonArray });
+
+      item.tooltip.locations.forEach((location) => {
+        const liEl = document.createElement("li");
+        liEl.classList.add("dot-tooltip-li");
+
+        liEl.innerHTML = location;
+
+        ul.append(liEl);
+      });
+
+      div.append(ul);
+    });
+
+    return div;
+  } else {
+    const ul = document.createElement("ul");
+    ul.setAttribute("class", "mobile-tooltip-list");
+    ul.innerHTML = `<h4 class="dot-list-title">${title}</h4>`;
+
+    locations?.forEach((listItem) => {
+      const liEl = document.createElement("li");
+      liEl.classList.add("mobile-tooltip-li");
+
+      if (listItem.length) {
+        liEl.innerHTML = listItem;
+        ul.append(liEl);
+      }
+    });
+
+    el.append(ul);
+
+    return el;
+  }
 };
