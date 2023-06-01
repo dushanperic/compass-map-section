@@ -39,7 +39,7 @@ document.querySelector("#js-container").innerHTML = `
             <div id="section-dynamic-content" class="section-dynamic-content">
               <img
                 id="section-partner-logo"
-                class="section-partner-logo hidden"
+                class="section-partner-logo"
                 src=""
                 alt="Partner logo"
               />
@@ -51,17 +51,12 @@ document.querySelector("#js-container").innerHTML = `
                 href=""
                 target="__blank"
               ></a>
-              <div class="spacer-md"></div>
-              <div id="tooltip-test" class="tooltip-test">
-                <span id="tooltip-test-title" class="tooltip-test-title"
-                  >TOOLTI TITLE</span
-                >
-                <ul id="tooltip-test-list" class="tooltip-test-list">
-                  <li>Test list tooltip</li>
-                  <li>Test list tooltip</li>
-                  <li>Test list tooltip</li>
-                </ul>
-              </div>
+            </div>
+              
+            <div class="spacer-md"></div>
+            <div id="tooltip-test" class="tooltip-test">
+              <span id="tooltip-test-title" class="tooltip-test-title"></span>
+              <div id="tooltip-test-list" class="tooltip-test-list"></div>
             </div>
           </div>
         </div>

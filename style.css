@@ -72,7 +72,6 @@ img.hidden {
 .section-partner-logo {
   width: 100%;
   max-width: 203px;
-  display: none;
 }
 
 .grid-item {
@@ -129,6 +128,7 @@ img.hidden {
   position: relative;
   cursor: pointer;
   /* z-index: 10; */
+  position: relative;
 }
 
 .dot-inner {
@@ -222,7 +222,7 @@ img.hidden {
 
 .tooltip-test-list li {
   width: 100%;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 24px;
   margin-bottom: 14px;
   padding-left: 0;
@@ -298,16 +298,18 @@ img.hidden {
   content: "Partner";
   background-color: var(--dot-enabled-bg);
   color: var(--color-dark);
-  padding: 0.5rem;
-  border-radius: 100px;
   margin-right: 20px;
   text-transform: uppercase;
+  border-radius: 100vw;
+  margin-right: 1rem;
+  padding: 0.25rem 1rem;
+  font-size: 1.13rem;
+  font-weight: 500;
+  text-decoration: none;
 }
 
 /* SMALL DEVICE BUTTONS */
 .sm-buttons-wrapper {
-  /* display: flex;
-  flex-wrap: wrap; */
   width: 100%;
   height: auto;
 }
@@ -320,7 +322,7 @@ img.hidden {
   align-items: center;
   justify-content: center;
   margin-right: 1rem;
-  height: 6rem;
+  height: 3rem;
   transition: all 200ms ease;
   opacity: 0.7;
 }
@@ -467,6 +469,8 @@ img.hidden {
   }
 
   .tooltip-test-list li {
+    margin-bottom: 20px;
+    font-size: 18px;
   }
 
   .sm-visible {
@@ -539,5 +543,53 @@ img.hidden {
 
   .section-partner-logo {
     max-width: 300px;
+  }
+}
+
+/* NEW REGION TOOLTIP */
+.dot-tooltip {
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* transform: translateX(-100px); */
+  z-index: 100;
+  min-width: 321px;
+  max-width: 321px;
+
+  border-radius: 6px;
+  width: 100%;
+  background: var(--color-dark);
+  border-radius: 6px;
+  padding: 0.5rem;
+  display: none;
+}
+
+.dot-tooltip-li {
+  width: 100%;
+  white-space: normal;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+.dot-list-title {
+  font-size: 16px;
+  list-style: none;
+  line-height: 21px;
+  color: var(--dot-enabled-bg);
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 1200px) {
+  /* NEW REGION TOOLTIP */
+  .dot-tooltip {
+    transform: translate(-10%, -50%);
+    display: block;
+  }
+
+  .dot-tooltip-li {
+    font-size: 18px;
+    line-height: 24px;
+    list-style: none;
   }
 }

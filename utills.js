@@ -53,60 +53,113 @@ export const parseAttributes = (el) => {
 export const getMapData = (str) => {
   const rows = str.split(",");
 
-  const mapData = rows.map((row) =>
+  const mapData = rows.map((row, rowindex) =>
     row
       .split("")
       .map((char, index) => {
         if (char === "0") {
-          return { _index: index, region: REGION.scotland };
+          return {
+            _index: index,
+            region: REGION.scotland,
+            map_index: `${rowindex}-${index}`,
+          };
         }
 
         if (char === "1") {
-          return { _index: index, region: REGION.north_east };
+          return {
+            _index: index,
+            region: REGION.north_east,
+            map_index: `${rowindex}-${index}`,
+          };
         }
 
         if (char === "2") {
-          return { _index: index, region: REGION.north_west };
+          return {
+            _index: index,
+            region: REGION.north_west,
+            map_index: `${rowindex}-${index}`,
+          };
         }
 
         if (char === "3") {
-          return { _index: index, region: REGION.yorkshire_and_the_cumber };
+          return {
+            _index: index,
+            region: REGION.yorkshire_and_the_cumber,
+            map_index: `${rowindex}-${index}`,
+          };
         }
 
         if (char === "4") {
-          return { _index: index, region: REGION.wales };
+          return {
+            _index: index,
+            region: REGION.wales,
+            map_index: `${rowindex}-${index}`,
+          };
         }
 
         if (char === "5") {
-          return { _index: index, region: REGION.west_midlands };
+          return {
+            _index: index,
+            region: REGION.west_midlands,
+            map_index: `${rowindex}-${index}`,
+          };
         }
 
         if (char === "6") {
-          return { _index: index, region: REGION.east_midlands };
+          return {
+            _index: index,
+            region: REGION.east_midlands,
+            map_index: `${rowindex}-${index}`,
+          };
         }
 
         if (char === "7") {
-          return { _index: index, region: REGION.east };
+          return {
+            _index: index,
+            region: REGION.east,
+            map_index: `${rowindex}-${index}`,
+          };
         }
 
         if (char === "8") {
-          return { _index: index, region: REGION.south_west };
+          return {
+            _index: index,
+            region: REGION.south_west,
+            map_index: `${rowindex}-${index}`,
+          };
         }
 
         if (char === "9") {
-          return { _index: index, region: REGION.south_east };
+          return {
+            _index: index,
+            region: REGION.south_east,
+            map_index: `${rowindex}-${index}`,
+          };
         }
 
         if (char === "=") {
-          return { _index: index, region: "" };
+          return {
+            _index: index,
+            region: "",
+            map_index: `${rowindex}-${index}`,
+          };
         }
 
         if (char === "a") {
-          return { _index: index, region: REGION.london_area };
+          return {
+            _index: index,
+            region: REGION.london_area,
+            map_index: `${rowindex}-${index}`,
+          };
         }
 
         if (char === "*") {
-          return { _index: index, region: REGION.ireland, disabled: true };
+          return {
+            _index: index,
+            region: REGION.ireland,
+            disabled: true,
+            map_index: `${rowindex}-${index}`,
+          };
         }
       })
       .filter((data) => data && data)
@@ -170,10 +223,37 @@ export const drawMap = (rootElement, cfg) => {
   rootElement.append(mapContainer);
 };
 
-export const removeTooltip = () => {
-  const tooltip = document.querySelector(".tooltip");
+export const removeElement = (selector) => {
+  const element = document.querySelector(`${selector}`);
 
-  if (tooltip) {
-    tooltip.remove();
+  if (element) {
+    element.remove();
   }
+};
+
+export const createTooltip = (data) => {
+  const { title } = data;
+  const el = document.createElement("div");
+  el.setAttribute("class", "dot-tooltip-li dot-tooltip");
+  el.setAttribute("id", `dot-tooltip-${data.id}`);
+  const tooltipInnerHTML = `
+    <h4 class="dot-list-title">${title}</h4>
+  `;
+  el.innerHTML = tooltipInnerHTML;
+  const ul = document.createElement("ul");
+  ul.setAttribute("class", "dot-tooltip-list");
+
+  data.locations.forEach((listItem) => {
+    const liEl = document.createElement("li");
+    liEl.classList.add("dot-tooltip-li");
+
+    if (listItem.length) {
+      liEl.innerHTML = listItem;
+      ul.append(liEl);
+    }
+  });
+
+  el.append(ul);
+
+  return el;
 };
