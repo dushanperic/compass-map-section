@@ -198,7 +198,9 @@ export const drawMap = (rootElement, cfg) => {
         dotEl.classList.add("hidden");
       } else {
         dotEl.setAttribute("data-region", matchingEl?.region);
-        dotEl.setAttribute("data-title", REGION_STRING[matchingEl?.region]);
+        if (matchingEl?.region) {
+          dotEl.setAttribute("data-title", REGION_STRING[matchingEl?.region]);
+        }
 
         if (matchingEl?.disabled) {
           dotEl.classList.add("disabled");
