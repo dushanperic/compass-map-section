@@ -201,12 +201,10 @@ html {
 
 /* PARTNER LINK WITH LABEL */
 .partner-link {
-  display: inline;
+  display: inline-block;
   width: 100%;
   color: var(--color-light);
   text-decoration: none;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
   line-height: 1.5;
 }
 
@@ -222,6 +220,8 @@ html {
   font-size: 0.8rem;
   font-weight: 500;
   text-decoration: none;
+  display: inline-block;
+  margin-bottom: 1rem;
 }
 
 /* SMALL DEVICE BUTTONS */
@@ -360,6 +360,10 @@ html {
   .lg-visible {
     display: block;
   }
+
+  .labeled::before {
+    margin-bottom: 0;
+  }
 }
 
 @media only screen and (min-width: 1900px) {
@@ -452,12 +456,18 @@ html {
   padding: 0.5rem;
   display: none;
 }
+.dot-tooltip-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
 
 .dot-tooltip-li {
   width: 100%;
   white-space: normal;
   font-size: 14px;
-  margin-bottom: 14px;
+  margin: 0 0 14px 0;
+  padding: 0;
   color: var(--color-light);
   list-style: none;
 }
