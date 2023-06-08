@@ -239,7 +239,9 @@ const locationCords = [
     tooltip: {
       id: "9",
       title: "Eden Conveyancing",
-      locations: ["MISSING INFO"],
+      locations: [
+        "Unit 7, 19 Paintworks, Bath Rd, Arno's Vale, Bristol BS4 3EA, United Kingdom ",
+      ],
     },
     section: {
       description:
