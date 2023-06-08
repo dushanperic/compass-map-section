@@ -17,6 +17,7 @@ export const getDOMElements = () => {
   const tooltip = document.getElementById("tooltip-test");
   const tooltipTitle = document.getElementById("tooltip-test-title");
   const tooltipList = document.getElementById("tooltip-test-list");
+  const regionTooltip = document.getElementById("region-tooltip");
 
   const dots = document.querySelectorAll(".dot");
   const sectionDescription = document.getElementById("section-description");
@@ -35,10 +36,11 @@ export const getDOMElements = () => {
     tooltip,
     tooltipTitle,
     tooltipList,
+    regionTooltip,
   };
 };
 
-export const parseAttributes = (el) => {
+export const parseDotAttributes = (el) => {
   const tooltipData = el.getAttribute("data-tooltip");
   const mapIndex = el.getAttribute("data-map-index");
   const region = el.getAttribute("data-region");
@@ -197,9 +199,9 @@ export const drawMap = (rootElement, cfg) => {
       if (!matchingEl && !matchingEl?.region) {
         dotEl.classList.add("hidden");
       } else {
-        dotEl.setAttribute("data-region", matchingEl?.region);
-        if (matchingEl?.region) {
-          dotEl.setAttribute("data-title", REGION_STRING[matchingEl?.region]);
+        if (matchingEl?.region && matchingEl?.region !== undefined) {
+          dotEl.setAttribute("data-region", matchingEl?.region);
+          // dotEl.setAttribute("data-title", REGION_STRING[matchingEl?.region]);
         }
 
         if (matchingEl?.disabled) {

@@ -153,35 +153,6 @@ html {
   background-color: var(--dot-enabled-muted-bg);
 }
 
-/* REGION TOOLTIP */
-[data-title]:hover:after {
-  opacity: 1;
-  transition: all 0.1s ease 0.5s;
-  visibility: visible;
-}
-
-[data-title]:after {
-  content: attr(data-title);
-  background-color: #000000;
-  color: var(--dot-highlight-bg);
-  position: absolute;
-  padding: 0 0.75rem;
-  bottom: -1.6em;
-  left: 100%;
-  white-space: nowrap;
-  opacity: 0;
-  border: none;
-  border-radius: 100px;
-  z-index: 99999;
-  visibility: hidden;
-  vertical-align: middle;
-  line-height: 1.6;
-}
-
-[data-title] {
-  position: relative;
-}
-
 /* SPACERS */
 .spacer-sm {
   height: 10px;
@@ -222,6 +193,23 @@ html {
   text-decoration: none;
   display: inline-block;
   margin-bottom: 1rem;
+}
+
+/* REGIONAL TOOLTIP */
+
+#region-tooltip {
+  position: absolute;
+  background-color: #000000;
+  color: var(--dot-highlight-bg);
+  position: absolute;
+  padding: 0 10px;
+  white-space: nowrap;
+  border: none;
+  border-radius: 100px;
+  z-index: 99999;
+  vertical-align: middle;
+  line-height: 1.6;
+  display: none;
 }
 
 /* SMALL DEVICE BUTTONS */
@@ -291,10 +279,14 @@ html {
 
 @media only screen and (min-width: 1200px) {
   #js-container {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  #region-tooltip {
+    display: block;
   }
 
   #map-section {
@@ -444,10 +436,9 @@ html {
   position: absolute;
   top: 0;
   right: 0;
-  /* transform: translateX(-100px); */
   z-index: 100;
-  min-width: 321px;
-  max-width: 321px;
+  min-width: 290px;
+  max-width: 290px;
 
   border-radius: 6px;
   width: 100%;

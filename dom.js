@@ -2,7 +2,7 @@ import { locationCords, mapStr } from "./data";
 import {
   throttle,
   getDOMElements,
-  parseAttributes,
+  parseDotAttributes,
   removeElement,
   drawMap,
   createTooltip,
@@ -41,6 +41,7 @@ export const renderButtons = () => {
     const img = document.createElement("img");
     el.classList.add("logo-button");
     el.setAttribute("id", `button-${key}`);
+    el.setAttribute("data-name", key);
 
     const matched = locationCords.find((item) => item.key === key);
 
@@ -67,7 +68,7 @@ export const renderButtons = () => {
 
 const handleButtonClick = (e) => {
   const allButtons = document.querySelectorAll(".logo-button");
-  const target = document.querySelector("#section-partner-logo");
+  const target = document.querySelector("#partner-link");
 
   allButtons.forEach((button) => button.classList.remove("active"));
   e.currentTarget.classList.add("active");
@@ -81,7 +82,7 @@ const handleButtonClick = (e) => {
     `[data-map-index="${buttonMapIndex}"]`
   );
 
-  const { region, mapIndex } = parseAttributes(DOMElement);
+  const { region, mapIndex } = parseDotAttributes(DOMElement);
 
   state = {
     ...state,
@@ -111,19 +112,28 @@ const handleClick = () => {
 };
 
 const handleMouseLeave = () => {
-  // TODO: Discus about state reset with UI leads
-  // state = {
-  //   isPaused: false,
-  //   mapIndex: null,
-  //   pauseState: false,
-  //   currentRegion: null,
-  //   currentTooltip: null,
-  //   currentSection: null,
-  // };
-  // resetDOM();
+  if (state.isPaused) {
+    return;
+  }
+
+  state = {
+    isPaused: false,
+    mapIndex: null,
+    pauseState: false,
+    currentRegion: null,
+    currentTooltip: null,
+    currentSection: null,
+  };
+  resetDOM();
 };
 
 function handleMouseMove(e) {
+  const regionTooltip = document.getElementById("region-tooltip");
+  if (state.currentRegion && regionTooltip) {
+    regionTooltip.style.left = `${e.clientX + 20}px`;
+    regionTooltip.style.top = `${e.clientY}px`;
+  }
+
   if (
     !e.target.classList.contains("dot") ||
     e.target.classList.contains("hidden")
@@ -139,7 +149,7 @@ function handleMouseMove(e) {
     ? e.target.parentElement
     : e.target;
 
-  const { region, mapIndex } = parseAttributes(el);
+  const { region, mapIndex } = parseDotAttributes(el);
 
   if (mapIndex === state.mapIndex) {
     // We are on the same element, prevent state change
@@ -196,10 +206,17 @@ const handleNewLocation = () => {
 };
 
 function handleNewRegion() {
+  const tooltip = document.getElementById("region-tooltip");
   const allDots = document.querySelectorAll(`.dot`);
   const regionDots = document.querySelectorAll(
     `[data-region="${state?.currentRegion}"]`
   );
+
+  if (state?.currentRegion) {
+    tooltip.innerHTML = REGION_STRING[state?.currentRegion];
+  } else {
+    tooltip.innerHTML = "";
+  }
 
   allDots.forEach((dot) => {
     dot.classList.remove("highlight");
@@ -230,7 +247,7 @@ function handleDotsUpdate() {
     el.classList.remove("muted");
     el.classList.remove("enabled_muted");
 
-    const { mapIndex, region } = parseAttributes(el);
+    const { mapIndex, region } = parseDotAttributes(el);
     const isFromGroup =
       region === state.currentRegion && mapIndex !== state.mapIndex;
 
@@ -247,13 +264,16 @@ function handleDotsUpdate() {
   });
 }
 
-// function resetDOM() {
-//   const { sectionDescription, partnerLogoImage, partnerLink } =
-//     getDOMElements();
-//   sectionDescription.innerHTML = "";
-//   partnerLogoImage.src = "";
-//   partnerLogoImage.classList.add("hidden");
-// }
+function resetDOM() {
+  const { sectionDescription, partnerLogoImage, partnerLink, regionTooltip } =
+    getDOMElements();
+  sectionDescription.innerHTML = "";
+  partnerLogoImage.src = "";
+  partnerLogoImage.classList.add("hidden");
+  regionTooltip.innerHTML = "";
+  partnerLink.innerHTML = "";
+  partnerLink.classList.remove("labeled");
+}
 
 export function initDOM(rootElement) {
   drawMap(document.querySelector("#map"), { xCount: 44, yCount: 54, mapStr });

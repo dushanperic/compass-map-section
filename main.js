@@ -20,6 +20,7 @@ document.querySelector("#js-container").innerHTML = `
         <div class="grid-item map-container">
           <div class="item-container content-flex">
             <div id="map" class="map-wrapper"></div>
+            <div id="region-tooltip"></div>
           </div>
         </div>
         <div class="grid-item content-container">
