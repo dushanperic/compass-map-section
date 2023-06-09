@@ -128,6 +128,10 @@ const handleMouseLeave = () => {
 };
 
 function handleMouseMove(e) {
+  if (window.innerWidth < 1200) {
+    return;
+  }
+
   const regionTooltip = document.getElementById("region-tooltip");
   if (state.currentRegion && regionTooltip) {
     regionTooltip.style.left = `${e.clientX + 20}px`;
