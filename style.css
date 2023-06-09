@@ -199,7 +199,7 @@ html {
 
 #region-tooltip {
   position: absolute;
-  background-color: #000000;
+  background: var(--color-dark);
   color: var(--dot-highlight-bg);
   position: absolute;
   padding: 0 10px;
@@ -405,7 +405,7 @@ html {
 
   .section-partner-logo {
     width: auto;
-    max-height: 250px;
+    max-height: 180px;
   }
 }
 
