@@ -86,7 +86,7 @@ export const getMapData = (str) => {
         if (char === "3") {
           return {
             _index: index,
-            region: REGION.yorkshire_and_the_cumber,
+            region: REGION.yorkshire_and_the_humber,
             map_index: `${rowindex}-${index}`,
           };
         }
