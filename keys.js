@@ -24,7 +24,7 @@ export const REGION_STRING = {
   scotland: "Scotland",
   north_east: "North East",
   north_west: "North West",
-  yorkshire_and_the_cumber: "Yorkshire and the Cumber",
+  yorkshire_and_the_cumber: "Yorkshire and the Humber",
   wales: "Wales",
   west_midlands: "West Midlands",
   east_midlands: "East Midlands",
