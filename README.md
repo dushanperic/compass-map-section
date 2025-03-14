@@ -17,8 +17,6 @@ This template uses the following dependencies:
 
 ## Development
 
-1. To start development
-
 ```bash
 cd your-project-name
 npm install
@@ -82,11 +80,11 @@ This is the structure of the project:
 
 ## Deploying
 
-Scripts that are loaded on the site are served via jsdeliver from the dist folder.
+Scripts that are loaded on the site are served via jsdelivr from the dist folder.
 
 The script targets a specific div on the page and renders a content inside it.
 
-When new dist files are generated, it is necessary to create a new js deliver links to the dist files and update the links in the head of the webflow site.
+When new dist files are generated, it is necessary to create a new jsdelivr links to the dist files and update the links in the head of the webflow site.
 
 ## License
 
