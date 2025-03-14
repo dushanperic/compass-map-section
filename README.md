@@ -15,7 +15,7 @@ This template uses the following dependencies:
 - **[vite-plugin-eslint](https://www.npmjs.com/package/vite-plugin-eslint):** Integrates ESLint into the Vite build process for on-the-fly linting.
 - **[the-new-css-reset](https://elad2412.github.io/the-new-css-reset/):** A modern, CSS reset for your styles.
 
-## Cloning
+## Development
 
 1. To start development
 
@@ -82,7 +82,10 @@ This is the structure of the project:
 
 ## Deploying
 
-Scripts that are loaded on the site are served via jsdeliver from the dist folder. The script targets a specific div on the page and renders a content inside it.
+Scripts that are loaded on the site are served via jsdeliver from the dist folder.
+
+The script targets a specific div on the page and renders a content inside it.
+
 When new dist files are generated, it is necessary to create a new js deliver links to the dist files and update the links in the head of the webflow site.
 
 ## License
